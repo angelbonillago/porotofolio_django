@@ -1,0 +1,42 @@
+{% block contacto %}
+
+<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+    <form action="{% url 'contactame' %}" method="post" role="form" class="php-email-form">
+        {% csrf_token %}
+        <input type='hidden' name='user' id="user" value="{{ id_user }}" /> 
+ 
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="name">{{ form_contacto.nombre.label }}</label>
+                <!--                     <input type="text" name="name" class="form-control" id="name" required>
+ -->
+                {{ form_contacto.nombre }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="name">{{ form_contacto.correo.label }}</label>
+                <!-- <input type="email" class="form-control" name="email" id="email" required> -->
+                {{ form_contacto.correo }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">{{ form_contacto.asunto.label }}</label>
+            <!-- <input type="text" class="form-control" name="subject" id="subject" required> -->
+            {{ form_contacto.asunto }}
+        </div>
+        <div class="form-group">
+            <label for="name">{{ form_contacto.mensaje.label }}</label>
+            <!-- <textarea class="form-control" name="message" rows="10" required></textarea> -->
+            {{ form_contacto.mensaje }}
+        </div>
+        <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit">Send Message</button></div>
+    </form>
+</div>
+
+
+{% endblock contacto %}
